@@ -44,4 +44,5 @@ go run helloworld/greeter_server/main.go
 ```
 ```bash
 go run helloworld/greeter_client/main.go
+go run helloworld/greeter_client/main.go --name=Alice
 ```
