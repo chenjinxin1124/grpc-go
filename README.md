@@ -30,7 +30,10 @@ go mod tidy
 ```
 
 ## 更新gRPC服务
-修改 helloworld/helloworld.proto
+1. helloworld/helloworld/helloworld.proto
+2. helloworld/greeter_server/main.go
+3. helloworld/greeter_client/main.go
+
 ### 生成proto文件
 ```shell
 protoc --go_out=. --go_opt=paths=source_relative \
