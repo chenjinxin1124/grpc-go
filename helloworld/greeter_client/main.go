@@ -64,4 +64,15 @@ func main() {
 		log.Fatalf("could not greet: %v", err)
 	}
 	log.Printf("Greeting: %s", r.GetMessage())
+
+	// https://leetcode-cn.com/problems/product-of-array-except-self/
+	// 计算执行时间
+	start := time.Now()
+	res, err := c.ProductExceptSelf(ctx, &pb.ProductExceptSelfRequest{Nums: []int32{1, 2, 3, 4}})
+	if err != nil {
+		log.Fatalf("could not greet: %v", err)
+	}
+	log.Printf("Result: %v", res.GetNums()) // [24, 12, 8, 6]
+	end := time.Now()
+	log.Printf("time: %v", end.Sub(start))
 }

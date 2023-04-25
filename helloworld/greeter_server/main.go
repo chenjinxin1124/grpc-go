@@ -50,6 +50,25 @@ func (s *server) SayHelloAgain(ctx context.Context, in *pb.HelloRequest) (*pb.He
 	return &pb.HelloReply{Message: "Hello again " + in.GetName()}, nil
 }
 
+// https://leetcode.cn/problems/product-of-array-except-self/
+func (s *server) ProductExceptSelf(ctx context.Context, in *pb.ProductExceptSelfRequest) (*pb.ProductExceptSelfReply, error) {
+	nums := in.GetNums()
+	n := len(nums)
+	res := make([]int32, n)
+	res[0] = 1
+	for i := 1; i < n; i++ {
+		res[i] = res[i-1] * nums[i-1]
+	}
+	R := int32(1)
+	for i := n - 1; i >= 0; i-- {
+		res[i] = res[i] * R
+		R *= nums[i]
+	}
+	return &pb.ProductExceptSelfReply{
+		Nums: res,
+	}, nil
+}
+
 func main() {
 	flag.Parse()
 	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
